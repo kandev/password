@@ -12,3 +12,5 @@ index.php?len=18&words=3
 len - Minimum password length. Valid values 8-50. Default 8.
 
 words - Minumum count of words. Valid values 2-10. Default 2.
+
+Both arguments can be ommited.
