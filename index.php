@@ -86,7 +86,17 @@ function crypt_apr1_md5($plainpasswd) {
     return "$"."apr1"."$".$salt."$".$tmp;
 }
 
-$pass = passCook();
+//Read URL variables
+$length=(int)(@$_GET["len"]);
+$words=(int)(@$_GET["words"]);
+
+//Simple protection
+if ($length<8) $length=8;
+if ($words<2) $words=2;
+if ($length>32) $length=32;
+if ($words>10) $words=10;
+
+$pass = passCook($length,$words);
 $data["password"] = $pass;
 $data["sha1"] = sha1($pass);
 $data["htpasswd"] = crypt_apr1_md5($pass);
