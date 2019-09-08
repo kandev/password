@@ -1,5 +1,5 @@
 # password generator
-Generate easy to remember and hard to crack password
+Generate easy to remember and hard to crack password. Running in production at [kandev.com](https://kandev.com/en/tools/).
 
 Tool written in PHP in order to outsorce my password generation skills and of course make my life just a little bit easier :)
 
@@ -7,7 +7,7 @@ Having password made of random words makes it a bit easier to remember and very 
 
 ##Usage:
 
-index.php?len=18&words=3
+> index.php?len=18&words=3
 
 **len** - Minimum password length. Valid values 8-50. Default 8.
 
