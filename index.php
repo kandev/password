@@ -21,8 +21,9 @@ function getLineOfFile($l) {
 
 //Random symbol used for words spacer
 function pickSpacer() {
-    $set = "^!#%-_+.1234567890";
-    return $set[array_rand(str_split($set))];
+    $numbers = "1234567890";
+    $symbols = "^!#%-_+.?><[]*()";
+    return $numbers[array_rand(str_split($numbers))].$symbols[array_rand(str_split($symbols))];
 }
 
 //Counts how many lines are in file and picks one random
@@ -91,9 +92,9 @@ $length=(int)(@$_GET["len"]);
 $words=(int)(@$_GET["words"]);
 
 //Simple protection
-if ($length<8) $length=8;
+if ($length<8) $length=10;
+if ($length>50) $length=50;
 if ($words<2) $words=2;
-if ($length>32) $length=32;
 if ($words>10) $words=10;
 
 $pass = passCook($length,$words);
@@ -102,7 +103,7 @@ $data["sha1"] = sha1($pass);
 $data["htpasswd"] = crypt_apr1_md5($pass);
 
 //Output the result in JSON format
-//header('Content-Type: application/json');
+header('Content-Type: application/json');
 echo json_encode($data);
 
 ?>
